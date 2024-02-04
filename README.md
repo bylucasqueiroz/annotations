@@ -3,6 +3,6 @@
 2. Golang
 	- [[Annotations]]
 	- [[Concurrency vs Parallelism]]
-	- [[Kafka]]
+	- [[Working with Kafka]]
 3. Kubernetes
 	- [[Commands]]
