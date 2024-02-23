@@ -1,28 +1,22 @@
-### Configure Kubectl with AWS
-___
-#### Connect using SSO
-
-``` bash
-aws configure sso --profile (PROFILE)
-```
-#### Configure STS
-
-``` bash
-aws sts get-caller-identity --profile (PROFILE)
-```
-#### List AWS Clusters
-
-``` bash
-aws eks list-clusters --profile (PROFILE)
-```
-#### Update kubecofing
-
-```bash
-aws eks --region sa-east-1 update-kubeconfig --name (CLUSTER_NAME) --profile (PROFILE)
-```
+1. [Kubectl](#kubectl)
+	1. [Configs](#configs)
+	2. [Pods](#pods)
+	3. [Storage Class](#StorageClass)
+	4. [Namespaces](#namespaces)
+	5. [Logs](#logs)
+	6. [Deployment](#deployment)
+	7. [Service Account](#ServiceAccount)
+	8. [Persistent Volume](#PersistentVolume)
+	9. [Persistent Volume Claim](#PersistentVolumeClaim)
+	10. [Force Delete](#ForceDelete)
+	11. [Nodes](#nodes)
+	12. [DaemonSet](#DaemonSet)
+	13. [HPA](#hpa)
+	14. [Events](#events)
+2. [AWS Configuration](#configuration)
 ## Kubectl
-___
 ### Configs
+___
 #### Get contexts
 
 ```bash
@@ -72,7 +66,7 @@ kubectl -n (NAMESPACE) delete pod (POD_NAME)
 kubectl -n (NAMESPACE) rollout restart deploy (DEPLOY_NAME)
 ```
 
-### Storage Class
+### StorageClass
 ___
 #### Get storage class no Kubernetes
 
@@ -110,6 +104,7 @@ kubectl -n (NAMESPACE) exec -it (POD_NAME) -- sh
 ``` bash
 ctr -n kis.io containers list
 ```
+
 ### Deployment
 ___
 #### Return the image name of the first container defined in the specified deployment
@@ -127,26 +122,27 @@ kubectl -n (NAMESPACE) rollout restart deploy (DEPLOYMENT_NAME)
 ``` bash
 kubectl -n (NAMESPACE) scale deployments/(DEPLOYMENT_NAME) --replicas=0
 ```
-### Service Account
+### ServiceAccount
 ___
 #### Get Service Account
 
 ``` bash
 kubectl -n (NAMESPACE) get serviceaccount
 ```
-### Describe Service Account
+#### Describe Service Account
 
 ``` bash
 kubectl -n (NAMESPACE) describe serviceaccount (SERVICE_ACCOUNT_NAME)
 ```
-#### Persistent Volume (PV)
+
+### PersistentVolume
 ___
 #### Get Persistent Volume
 
 ``` bash
 kubectl -n (NAMESPACE) get pv
 ```
-### Describe Persistent Volume
+#### Describe Persistent Volume
 
 ```bash
 kubectl -n (NAMESPACE) describe pv (PV_NAME)
@@ -166,12 +162,13 @@ kubectl -n (NAMESPACE) get pv -A
 ```bash
 kubectl -n (NAMESPACE) edit pv -A
 ```
-### Delete Persistent Volume
+#### Delete Persistent Volume
 
 ``` bash
 kubectl -n (NAMESPACE) delete pv (PV_NAME)
 ```
-### Persistent Volume Claim (PVC)
+
+### PersistentVolumeClaim
 ___
 #### Get Persistent Volume Claim
 
@@ -205,11 +202,12 @@ kubectl -n (NAMESPACE) delete pvc (PVC_NAME)
 ```
 
 OBS: Attention to delete a Persistent Volume Claim: [Delete with Protection](https://kubernetes.io/docs/concepts/storage/persistent-volumes)
-### Force Deletes
+### ForceDelete
 ___
 ``` bash
 --grace-period=0 --force
 ```
+
 ### Nodes
 ___
 #### Get Nodes
@@ -227,6 +225,7 @@ kubectl describe node (NODE_NAME)
 ``` bash
 kubectl top nodes
 ```
+
 ### DaemonSet
 ___
 #### Get Daemon
@@ -257,3 +256,27 @@ kubectl get events
 ### Set Sleep to Container
 
 Update a deployment, and insert the follow line: `comand: ["sleep"]`
+
+## Initial AWS Configuration
+### Configuration
+___
+#### Connect using SSO
+
+``` bash
+aws configure sso --profile (PROFILE)
+```
+#### Configure STS
+
+``` bash
+aws sts get-caller-identity --profile (PROFILE)
+```
+#### List AWS Clusters
+
+``` bash
+aws eks list-clusters --profile (PROFILE)
+```
+#### Update kubecofing
+
+```bash
+aws eks --region sa-east-1 update-kubeconfig --name (CLUSTER_NAME) --profile (PROFILE)
+```

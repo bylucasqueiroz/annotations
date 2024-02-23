@@ -1,7 +1,7 @@
-1. YouTube
-	- [[Videos Summary]]
-2. Golang
-	- [[Concurrency vs Parallelism]]
-	- [[Working with Kafka]]
-3. Kubernetes
-	- [[Kubernetes]]
+1. Golang
+	- [Concurrency vs Parallelism](<./golang/Concurrency vs Parallelism>)
+	- [Working with Kafka](<./golang/Working with Kafka>)
+2. Notes
+	- [Kubernetes](<./notes/Kubernetes>)
+	- [Docker](<./notes/docker>)
+	- [WSL](<./notes/wsl>)
