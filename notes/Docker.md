@@ -5,15 +5,30 @@ ___
 ```bash
 sudo service docker start
 ```
+#### Stop Docker
+
+```bash
+sudo service docker stop
+```
 #### Check container logs
 
 ``` bash
-docker logs <container_name>
+docker logs (container_name)
 ```
 #### Delete docker container
 
 ``` bash
-docker rm -f <container_id_or_name>
+docker rm -f (container_id_or_name)
+```
+#### Stop all containers
+
+```bash
+docker stop $(docker ps -a -q)
+```
+#### Remove all containers
+
+```bash
+docker rm $(docker ps -a -q)
 ```
 ### Docker Compose
 ___
